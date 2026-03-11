@@ -8,37 +8,23 @@
     :root {
       --deep-blue: #0b3d4a;
       --ocean-blue: #2d6f8e;
-      --light-blue: #dff3fb;
-      --sand: #f7fbfd;
+      --sky-blue: #dff3fb;
       --white: #ffffff;
-      --text: #16303a;
+      --sand: #f7fbfd;
+      --text: #17333d;
+      --border: #cfe6f2;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eef9ff, #f8fcfe);
       color: var(--text);
-      background: var(--sand);
       line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(rgba(11, 61, 74, 0.55), rgba(11, 61, 74, 0.55)), url('banner.jpg') center/cover no-repeat;
-      color: var(--white);
-      text-align: center;
-      padding: 110px 20px 90px;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.8rem;
-    }
-
-    header p {
-      margin: 0 auto 22px;
-      max-width: 700px;
-      font-size: 1.1rem;
     }
 
     nav {
@@ -46,78 +32,135 @@
       top: 0;
       z-index: 1000;
       background: var(--deep-blue);
+      padding: 14px 12px;
       text-align: center;
-      padding: 14px 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
     }
 
     nav a {
       color: var(--white);
       text-decoration: none;
-      margin: 0 14px;
-      font-weight: bold;
+      margin: 0 12px;
+      font-weight: 700;
       font-size: 0.95rem;
+      display: inline-block;
     }
 
     nav a:hover { text-decoration: underline; }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
+    header {
+      background:
+        linear-gradient(rgba(11, 61, 74, 0.48), rgba(11, 61, 74, 0.48)),
+        url('banner.jpg') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 120px 20px 100px;
     }
 
-    .card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      margin-bottom: 24px;
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 3rem;
+      letter-spacing: 0.5px;
     }
 
-    h2 {
-      color: var(--deep-blue);
-      margin-top: 0;
-      font-size: 2rem;
+    header p {
+      margin: 0 auto 22px;
+      max-width: 700px;
+      font-size: 1.15rem;
     }
 
     .btn {
       display: inline-block;
       background: var(--ocean-blue);
       color: var(--white);
+      text-decoration: none;
       padding: 12px 22px;
       border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
       margin-top: 10px;
     }
 
     .btn:hover { background: var(--deep-blue); }
 
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: var(--deep-blue);
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      color: var(--deep-blue);
+      margin-bottom: 10px;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .dog-card, .puppy-card {
+      background: #fbfeff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .dog-photo, .puppy-photo, .paper-photo {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      background: var(--sky-blue);
+      display: block;
+      margin-bottom: 14px;
     }
 
     .dog-photo, .puppy-photo {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      background: #c8e6f4;
+      height: 300px;
+    }
+
+    .paper-photo {
+      height: 240px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .contact-links a,
+    footer a {
+      color: var(--deep-blue);
+      text-decoration: none;
+      font-weight: 600;
     }
 
     footer {
       background: var(--deep-blue);
       color: var(--white);
-      padding: 28px 20px;
       text-align: center;
+      padding: 30px 20px;
+      margin-top: 20px;
     }
 
     footer a {
       color: var(--white);
-      text-decoration: none;
     }
 
     .small-note {
@@ -125,9 +168,11 @@
       opacity: 0.95;
     }
 
-    @media (max-width: 700px) {
-      header h1 { font-size: 2rem; }
-      nav a { display: inline-block; margin: 6px 8px; }
+    @media (max-width: 720px) {
+      header h1 { font-size: 2.2rem; }
+      nav a { margin: 6px 8px; }
+      .dog-photo, .puppy-photo { height: 240px; }
+      .paper-photo { height: 200px; }
     }
   </style>
 </head>
@@ -137,97 +182,119 @@
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#program">Our Program</a>
-    <a href="#parents">Meet the Parents</a>
     <a href="#breed-info">About the Breed</a>
+    <a href="#parents">Meet the Parents</a>
+    <a href="#story">Our Story</a>
     <a href="#puppies">Puppies</a>
-    <a href="#apply">Apply</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <header id="home">
     <h1>Rio Portuguese Water Dogs</h1>
     <p>Loving, Family-Raised Portuguese Water Dogs</p>
-    <a class="btn" href="#apply">Apply for a Puppy</a>
+    <a class="btn" href="#puppies">View Puppies</a>
   </header>
 
   <main class="container">
 
-    <section id="welcome" class="card">
+    <section class="card">
       <h2>Welcome</h2>
       <p>Welcome to Rio Portuguese Water Dogs. We raise happy, healthy, well-loved Portuguese Water Dogs in a loving family environment.</p>
     </section>
 
     <section id="about" class="card">
-      <h2>Who We Are</h2>
-      <p>At Rio Portuguese Water Dogs, we love this breed for its playful personality, intelligence, and loving nature. Portuguese Water Dogs are friendly, fun, and wonderful companions for families. We are committed to raising puppies with care, attention, and love right in our home.</p>
-      <p>Our goal is to raise healthy, happy, loving companions for families who will cherish them for years to come. Our dogs are part of our family and are raised with attentive care every step of the way.</p>
+      <h2>About Us</h2>
+      <p>We love Portuguese Water Dogs for their friendly nature, intelligence, playful personalities, and the joy they bring to everyday life. They are wonderful with people, fun to be around, and can make a beautiful addition to a loving family.</p>
     </section>
 
     <section id="program" class="card">
       <h2>Our Program</h2>
-      <p>Our puppies are raised in our home with their mom and dad in a family setting. We focus on giving each puppy a loving start with hands-on care and a clean, comfortable environment.</p>
-      <p>We believe in quality care, healthy development, and raising beautiful Portuguese Water Dogs that are ready to become a special part of your family.</p>
+      <p>Our goal is to raise healthy, happy, loving companions for families who will cherish them for years to come. Our dogs are part of our family and are raised with attentive care, love, and dedication every step of the way.</p>
+      <p>Our puppies are raised in our home with their mom and dad. We focus on giving each puppy the love and care it needs through hands-on attention and a clean, comfortable environment.</p>
     </section>
 
     <section id="breed-info" class="card">
       <h2>About Portuguese Water Dogs</h2>
       <p>Portuguese Water Dogs are intelligent, playful, loyal, and loving companions. They are known for their friendly personalities, athletic nature, and strong bond with their families. With their fun energy and affectionate temperament, they can be a wonderful addition to the right home.</p>
-      <p>This breed is active, people-oriented, and happiest when included as part of the family. We love Portuguese Water Dogs for their big personalities, their sweet nature, and the joy they bring into everyday life.</p>
+      <p>This breed is active, people-oriented, and happiest when included as part of the family. We love Portuguese Water Dogs for their big personalities, sweet nature, and the joy they bring into everyday life.</p>
     </section>
 
     <section id="parents" class="card">
       <h2>Meet the Parents</h2>
       <div class="grid">
-        <div>
-          <img class="dog-photo" src="mom.jpg" alt="Mom dog photo" />
-          <h3>Dam</h3>
-          <p>Add your mom dog's name, personality, and health information here.</p>
+        <div class="dog-card">
+          <img class="dog-photo" src="mom.jpg" alt="Blanka photo" />
+          <h3>Dam (Blanka)</h3>
+          <p>Blanka is a purebred Portuguese Water Dog. She is fearless, playful, and a friendly mama. She is intelligent, caring, and a protector of her babies.</p>
+          <p><strong>Health Information</strong></p>
+          <ul>
+            <li>Up to date on vaccinations</li>
+            <li>Vet checked and healthy</li>
+            <li>Maintained on a healthy diet</li>
+          </ul>
+          <img class="paper-photo" src="mom-registration.jpg" alt="Blanka registration or pedigree photo" />
+          <p class="small-note">Registration / pedigree photo</p>
         </div>
-        <div>
-          <img class="dog-photo" src="dad.jpg" alt="Dad dog photo" />
-          <h3>Sire</h3>
-          <p>Add your dad dog's name, personality, and health information here.</p>
+
+        <div class="dog-card">
+          <img class="dog-photo" src="dad.jpg" alt="Teddy photo" />
+          <h3>Sire (Teddy)</h3>
+          <p>Teddy is also a purebred Portuguese Water Dog. He is a shy and sweet boy who is smart and well trained.</p>
+          <p><strong>Health Information</strong></p>
+          <ul>
+            <li>Up to date on vaccinations</li>
+            <li>Strong build and healthy condition</li>
+            <li>Maintained on a healthy diet</li>
+          </ul>
+          <img class="paper-photo" src="dad-registration.jpg" alt="Teddy registration or pedigree photo" />
+          <p class="small-note">Registration / pedigree photo</p>
         </div>
       </div>
+    </section>
+
+    <section id="story" class="card">
+      <h2>Our Story</h2>
+      <p>Rio Portuguese Water Dogs was created from our love for this amazing breed. We personally fell in love with Portuguese Water Dogs because of their big personalities and the joy they bring into our lives. Our hope is to share that same joy with other families through healthy, loving puppies raised with care.</p>
     </section>
 
     <section id="puppies" class="card">
       <h2>Puppy Info</h2>
-      <p>Puppies will be available beginning <strong>April 8</strong>. They are raised in our home with love and care from the very beginning.</p>
-      <p>More photos and litter updates will be posted here as they grow.</p>
+      <p><strong>Available beginning April 8</strong></p>
+      <p>Puppies are raised in our home with love and care until they are ready for their new loving homes. Photos will be posted here as they grow.</p>
+      <p>AKC registerable · Vaccinated · Pickup available in Leesburg, Virginia · Delivery can be set up for an additional charge</p>
+      <p>For pickup or delivery details, please call, text, email, or message on Instagram.</p>
+
       <div class="grid">
-        <div>
-          <img class="puppy-photo" src="puppy1.jpg" alt="Puppy photo" />
+        <div class="puppy-card">
+          <img class="puppy-photo" src="puppy1.jpg" alt="Portuguese Water Dog puppy photo 1" />
           <a class="btn" href="https://forms.google.com" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
         </div>
-        <div>
-          <img class="puppy-photo" src="puppy2.jpg" alt="Puppy photo" />
+
+        <div class="puppy-card">
+          <img class="puppy-photo" src="puppy2.jpg" alt="Portuguese Water Dog puppy photo 2" />
           <a class="btn" href="https://forms.google.com" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
         </div>
       </div>
+
+      <p class="small-note">Replace the Google Forms link with your real puppy application form link.</p>
     </section>
 
-    <section id="apply" class="card">
-      <h2>Puppy Application</h2>
-      <p>If you are interested in one of our puppies, please fill out our application form.</p>
-      <a class="btn" href="https://forms.google.com" target="_blank" rel="noopener noreferrer">Open Puppy Application</a>
-      <p class="small-note">Replace the link above with your real Google Form link when your form is ready.</p>
-    </section>
-
-    <section id="contact" class="card">
+    <section id="contact" class="card contact-links">
       <h2>Contact</h2>
       <p><strong>Email:</strong> <a href="mailto:haleyclaros@gmail.com">haleyclaros@gmail.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+17037865363">703-786-5363</a></p>
+      <p><strong>Phone / Text:</strong> <a href="tel:+17037865363">703-786-5363</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/haleyclaros" target="_blank" rel="noopener noreferrer">@haleyclaros</a></p>
       <p><strong>Location:</strong> Leesburg, Virginia</p>
+      <p><strong>Website:</strong> rioportuguesewaterdogs.com</p>
     </section>
 
   </main>
 
   <footer>
     <p><strong>Rio Portuguese Water Dogs</strong></p>
-    <p>Leesburg, Virginia · <a href="mailto:haleyclaros@gmail.com">haleyclaros@gmail.com</a></p>
-    <p><a href="tel:+17037865363">703-786-5363</a></p>
-    <p><a href="https://riopotuguesewaterdogs.com">riopotuguesewaterdogs.com</a></p>
+    <p>Leesburg, Virginia · <a href="mailto:haleyclaros@gmail.com">haleyclaros@gmail.com</a> · <a href="tel:+17037865363">703-786-5363</a></p>
+    <p><a href="https://instagram.com/haleyclaros" target="_blank" rel="noopener noreferrer">Instagram: @haleyclaros</a></p>
+    <p>rioportuguesewaterdogs.com</p>
     <p class="small-note">© 2026 Rio Portuguese Water Dogs. All rights reserved.</p>
   </footer>
 
