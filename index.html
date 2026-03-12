@@ -9,7 +9,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f3fbff;
+      background: linear-gradient(to bottom, #eef9ff, #f8fdff);
       color: #123;
       line-height: 1.6;
     }
@@ -21,6 +21,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
     nav a {
@@ -33,19 +34,21 @@
 
     header {
       text-align: center;
-      padding: 30px 20px 40px;
+      padding: 0 0 40px;
       background: #f3fbff;
     }
 
     .banner {
       width: 100%;
-      max-width: 1100px;
-      max-height: 460px;
+      height: 520px;
       object-fit: cover;
-      border-radius: 16px;
       display: block;
-      margin: 0 auto 24px;
+      margin: 0 0 28px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .banner-text {
+      padding: 0 20px;
     }
 
     .banner-text h1 {
@@ -61,7 +64,7 @@
     }
 
     section {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
       padding: 20px;
     }
@@ -69,9 +72,14 @@
     .card {
       background: white;
       padding: 30px;
-      border-radius: 16px;
+      border-radius: 18px;
       margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border: 1px solid #d7edf7;
+    }
+
+    .soft-card {
+      background: linear-gradient(to bottom right, #f7fcff, #eef8fd);
     }
 
     h2 {
@@ -99,7 +107,17 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .dog-photo, .puppy-photo {
+    .dog-photo {
+      width: 100%;
+      height: 430px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #d9edf7;
+      display: none;
+      margin-bottom: 12px;
+    }
+
+    .puppy-photo {
       width: 100%;
       height: 300px;
       object-fit: cover;
@@ -109,24 +127,36 @@
       margin-bottom: 12px;
     }
 
-    .dog-photo.active, .puppy-photo.active {
+    .dog-photo.active,
+    .puppy-photo.active {
       display: block;
     }
 
     .gallery-buttons {
       text-align: center;
       margin: 10px 0 16px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
 
     .gallery-buttons button {
-      background: #0b3d4a;
+      background: linear-gradient(135deg, #0b3d4a, #2d6f8e);
       color: white;
       border: none;
-      padding: 8px 12px;
-      margin: 0 4px;
-      border-radius: 6px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       cursor: pointer;
+      font-size: 18px;
       font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .gallery-buttons button:hover {
+      transform: scale(1.06);
+      opacity: 0.95;
     }
 
     .btn {
@@ -138,6 +168,11 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(45,111,142,0.2);
+    }
+
+    .btn:hover {
+      background: #245c76;
     }
 
     .paper-link {
@@ -146,6 +181,13 @@
       color: #0b3d4a;
       font-weight: bold;
       text-decoration: none;
+    }
+
+    .available {
+      color: #1f8f3a;
+      font-weight: bold;
+      margin-top: 10px;
+      font-style: italic;
     }
 
     ul {
@@ -157,6 +199,23 @@
       color: #456;
     }
 
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .feature-box {
+      background: #eaf7fd;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid #d0e9f5;
+      text-align: center;
+      font-weight: 600;
+      color: #1f4a5c;
+    }
+
     footer {
       background: #0b3d4a;
       color: white;
@@ -166,6 +225,10 @@
     }
 
     @media (max-width: 700px) {
+      .banner {
+        height: 320px;
+      }
+
       .banner-text h1 {
         font-size: 30px;
       }
@@ -178,8 +241,12 @@
         margin: 6px 8px;
       }
 
-      .dog-photo, .puppy-photo {
-        height: 240px;
+      .dog-photo {
+        height: 300px;
+      }
+
+      .puppy-photo {
+        height: 220px;
       }
     }
   </style>
@@ -208,9 +275,16 @@
     </div>
   </header>
 
-  <section class="card">
+  <section class="card soft-card">
     <h2>Welcome</h2>
     <p>Welcome to Rio Portuguese Water Dogs. We raise happy, healthy, well-loved Portuguese Water Dogs in a loving family environment.</p>
+
+    <div class="feature-strip">
+      <div class="feature-box">Family-Raised</div>
+      <div class="feature-box">Loving Temperament</div>
+      <div class="feature-box">Active & Intelligent</div>
+      <div class="feature-box">Raised With Care</div>
+    </div>
   </section>
 
   <section id="about" class="card">
@@ -218,7 +292,7 @@
     <p>We love Portuguese Water Dogs for their friendly nature, intelligence, playful personalities, and the joy they bring to everyday life. They are wonderful with people, fun to be around, and can make a beautiful addition to a loving family.</p>
   </section>
 
-  <section id="program" class="card">
+  <section id="program" class="card soft-card">
     <h2>Our Program</h2>
     <p>Our goal is to raise healthy, happy, loving companions for families who will cherish them for years to come. Our dogs are part of our family and are raised with attentive care and love.</p>
     <p>Our puppies are raised in our home with their mom and dad. We focus on giving each puppy the love and care it needs with hands-on attention and a clean environment.</p>
@@ -228,21 +302,28 @@
     <h2>About Portuguese Water Dogs</h2>
     <p>Portuguese Water Dogs are intelligent, playful, loyal, and loving companions. They are known for their friendly personalities, athletic nature, and strong bond with their families.</p>
     <p>This breed is active, people-oriented, and happiest when included as part of the family. With their affectionate temperament and energetic personalities, they can be a wonderful addition to the right home.</p>
+    <p>With proper training, some Portuguese Water Dogs may be able to assist people with:</p>
+    <ul>
+      <li>autism</li>
+      <li>hearing loss</li>
+      <li>mobility disabilities</li>
+      <li>anxiety or emotional support needs</li>
+    </ul>
   </section>
 
-  <section id="parents" class="card">
+  <section id="parents" class="card soft-card">
     <h2>Meet the Parents</h2>
 
     <div class="grid">
       <div class="parent-card">
-        <div class="gallery" id="momGallery">
+        <div class="gallery auto-gallery" id="momGallery">
           <img class="dog-photo active" src="Blanka-1.JPG" alt="Blanka photo 1">
           <img class="dog-photo" src="blanka-2.jpg" alt="Blanka photo 2">
           <img class="dog-photo" src="blanka-3.png" alt="Blanka photo 3">
         </div>
         <div class="gallery-buttons">
-          <button onclick="prevImage('momGallery')">◀</button>
-          <button onclick="nextImage('momGallery')">▶</button>
+          <button onclick="prevImage('momGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('momGallery')" aria-label="Next photo">&#10095;</button>
         </div>
 
         <h3>Dam (Blanka)</h3>
@@ -259,14 +340,14 @@
       </div>
 
       <div class="parent-card">
-        <div class="gallery" id="dadGallery">
+        <div class="gallery auto-gallery" id="dadGallery">
           <img class="dog-photo active" src="teddy-1.png" alt="Teddy photo 1">
           <img class="dog-photo" src="teddy-2.png" alt="Teddy photo 2">
           <img class="dog-photo" src="teddy-3.jpg" alt="Teddy photo 3">
         </div>
         <div class="gallery-buttons">
-          <button onclick="prevImage('dadGallery')">◀</button>
-          <button onclick="nextImage('dadGallery')">▶</button>
+          <button onclick="prevImage('dadGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('dadGallery')" aria-label="Next photo">&#10095;</button>
         </div>
 
         <h3>Sire (Teddy)</h3>
@@ -289,7 +370,7 @@
     <p>Rio Portuguese Water Dogs was created from our love for this amazing breed. We personally fell in love with Portuguese Water Dogs because of their big personalities and the joy they bring into our lives. Our goal is to share that same joy with other families through healthy puppies raised with love and care.</p>
   </section>
 
-  <section id="puppies" class="card">
+  <section id="puppies" class="card soft-card">
     <h2>Puppy Info</h2>
     <p><strong>Available beginning April 8</strong></p>
     <p>Puppies are raised in our home with love and care until they are ready for their new loving homes. Photos will be posted here as they grow.</p>
@@ -298,73 +379,123 @@
     <div class="grid">
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="Amora-1.jpeg" alt="Amora puppy photo">
+        <div class="gallery auto-gallery" id="amoraGallery">
+          <img class="puppy-photo active" src="Amora-1.jpeg" alt="Amora puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('amoraGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('amoraGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Amora</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="Bruno-1.jpeg" alt="Bruno puppy photo">
+        <div class="gallery auto-gallery" id="brunoGallery">
+          <img class="puppy-photo active" src="Bruno-1.jpeg" alt="Bruno puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('brunoGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('brunoGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Bruno</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="Dulce-1.jpeg" alt="Dulce puppy photo">
+        <div class="gallery auto-gallery" id="dulceGallery">
+          <img class="puppy-photo active" src="Dulce-1.jpeg" alt="Dulce puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('dulceGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('dulceGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Dulce</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="perla.jpeg" alt="Perla puppy photo">
+        <div class="gallery auto-gallery" id="perlaGallery">
+          <img class="puppy-photo active" src="perla.jpeg" alt="Perla puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('perlaGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('perlaGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Perla</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="rey-1.jpeg" alt="Rey puppy photo">
+        <div class="gallery auto-gallery" id="reyGallery">
+          <img class="puppy-photo active" src="rey-1.jpeg" alt="Rey puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('reyGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('reyGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Rey</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <img class="puppy-photo active" src="samba.jpeg" alt="Samba puppy photo">
+        <div class="gallery auto-gallery" id="sambaGallery">
+          <img class="puppy-photo active" src="samba.jpeg" alt="Samba puppy photo">
+        </div>
+        <div class="gallery-buttons">
+          <button onclick="prevImage('sambaGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('sambaGallery')" aria-label="Next photo">&#10095;</button>
+        </div>
         <h3>Samba</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <div class="gallery" id="toroGallery">
+        <div class="gallery auto-gallery" id="toroGallery">
           <img class="puppy-photo active" src="toro-1.jpeg" alt="Toro puppy photo 1">
           <img class="puppy-photo" src="toro-2.jpeg" alt="Toro puppy photo 2">
         </div>
         <div class="gallery-buttons">
-          <button onclick="prevImage('toroGallery')">◀</button>
-          <button onclick="nextImage('toroGallery')">▶</button>
+          <button onclick="prevImage('toroGallery')" aria-label="Previous photo">&#10094;</button>
+          <button onclick="nextImage('toroGallery')" aria-label="Next photo">&#10095;</button>
         </div>
         <h3>Toro</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
       <div class="puppy-card">
-        <div style="width:100%; height:300px; background:#d9edf7; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#456; font-weight:bold;">
-          Puppy 8 photo coming soon
+        <div class="gallery auto-gallery" id="puppy8Gallery">
+          <div style="width:100%; height:300px; background:#d9edf7; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#456; font-weight:bold;">
+            Puppy 8 photo coming soon
+          </div>
+        </div>
+        <div class="gallery-buttons">
+          <button type="button" disabled aria-label="Previous photo">&#10094;</button>
+          <button type="button" disabled aria-label="Next photo">&#10095;</button>
         </div>
         <h3>Puppy 8</h3>
+        <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
     </div>
 
-    <p class="small-note">Replace each # link with your real registration or application link when ready.</p>
+    <p class="small-note">Replace each # link with your real registration or application link when ready. When you upload more puppy photos, they can be added to each gallery.</p>
   </section>
 
   <section id="contact" class="card">
@@ -386,7 +517,7 @@
       const gallery = document.getElementById(galleryId);
       if (!gallery) return;
       const images = gallery.querySelectorAll("img");
-      if (images.length === 0) return;
+      if (images.length <= 1) return;
 
       let activeIndex = 0;
 
@@ -405,7 +536,7 @@
       const gallery = document.getElementById(galleryId);
       if (!gallery) return;
       const images = gallery.querySelectorAll("img");
-      if (images.length === 0) return;
+      if (images.length <= 1) return;
 
       let activeIndex = 0;
 
@@ -419,12 +550,31 @@
       const prevIndex = (activeIndex - 1 + images.length) % images.length;
       images[prevIndex].classList.add("active");
     }
+
+    const autoGalleries = [
+      "momGallery",
+      "dadGallery",
+      "amoraGallery",
+      "brunoGallery",
+      "dulceGallery",
+      "perlaGallery",
+      "reyGallery",
+      "sambaGallery",
+      "toroGallery"
+    ];
+
+    autoGalleries.forEach(id => {
+      setInterval(() => {
+        nextImage(id);
+      }, 3500);
+    });
   </script>
 
 </body>
 </html>
 
    
+
 
 
 
