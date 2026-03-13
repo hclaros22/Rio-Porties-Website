@@ -1,663 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rio Portuguese Water Dogs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rio Portuguese Water Dogs</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(to bottom, #eef9ff, #f8fdff);
-      color: #123;
-      line-height: 1.6;
-    }
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:linear-gradient(to bottom,#eef9ff,#f8fdff);
+color:#123;
+line-height:1.6;
+}
 
-    nav {
-      background: #0b3d4a;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
+nav{
+background:#0b3d4a;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
 
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-    }
+nav a{
+color:white;
+margin:0 12px;
+text-decoration:none;
+font-weight:bold;
+}
 
-    header {
-      text-align: center;
-      padding: 0 0 40px;
-      background: #f3fbff;
-    }
+header{text-align:center;background:#f3fbff}
 
-    .banner-wrap {
-      position: relative;
-      width: 100%;
-      margin: 0 0 28px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
+.banner-wrap{
+position:relative;
+width:100%;
+overflow:hidden;
+}
 
-    .banner-slide,
-    .banner-video {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      display: none;
-      background: #d9edf7;
-    }
+.banner-slide,.banner-video{
+width:100%;
+height:520px;
+object-fit:cover;
+display:none;
+}
 
-    .banner-slide.active,
-    .banner-video.active {
-      display: block;
-    }
+.banner-slide.active,.banner-video.active{display:block}
 
-    .banner-arrow-wrap {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-      padding: 0 18px;
-      pointer-events: none;
-    }
+.banner-arrow-wrap{
+position:absolute;
+top:50%;
+left:0;
+right:0;
+transform:translateY(-50%);
+display:flex;
+justify-content:space-between;
+padding:0 20px;
+}
 
-    .banner-arrow {
-      pointer-events: auto;
-      background: linear-gradient(135deg, rgba(11,61,74,0.9), rgba(45,111,142,0.9));
-      color: white;
-      border: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
+.banner-arrow{
+background:#0b3d4a;
+color:white;
+border:none;
+width:45px;
+height:45px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+}
 
-    .banner-arrow:hover {
-      transform: scale(1.06);
-      opacity: 0.95;
-    }
+section{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
 
-    .banner-text {
-      padding: 0 20px;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:22px;
+}
 
-    .banner-text h1 {
-      font-size: 40px;
-      color: #0b3d4a;
-      margin: 0 0 8px;
-    }
+.puppy-card{
+background:white;
+border-radius:16px;
+padding:18px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
 
-    .banner-text p {
-      font-size: 20px;
-      margin: 0 0 18px;
-      color: #234;
-    }
+.puppy-photo{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:14px;
+display:none;
+}
 
-    section {
-      max-width: 1150px;
-      margin: auto;
-      padding: 20px;
-    }
+.puppy-photo.active{display:block}
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      border: 1px solid #d7edf7;
-    }
+.gallery-buttons{
+text-align:center;
+margin:10px 0;
+}
 
-    .soft-card {
-      background: linear-gradient(to bottom right, #f7fcff, #eef8fd);
-    }
+.gallery-buttons button{
+background:#2d6f8e;
+color:white;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+font-size:18px;
+cursor:pointer;
+}
 
-    h2 {
-      color: #0b3d4a;
-      font-size: 2rem;
-      margin-top: 0;
-    }
+.btn{
+display:inline-block;
+background:#2d6f8e;
+color:white;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin-top:10px;
+}
 
-    h3 {
-      color: #0b3d4a;
-      margin-bottom: 10px;
-    }
+.available{
+color:green;
+font-weight:bold;
+margin-top:10px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-    }
-
-    .parent-card, .puppy-card {
-      background: #fff;
-      border: 1px solid #cfe6f2;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .dog-photo {
-      width: 100%;
-      height: 430px;
-      object-fit: contain;
-      border-radius: 14px;
-      background: #d9edf7;
-      display: none;
-      margin-bottom: 12px;
-    }
-
-    .puppy-photo {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 14px;
-      background: #d9edf7;
-      display: none;
-      margin-bottom: 12px;
-    }
-
-    .dog-photo.active,
-    .puppy-photo.active {
-      display: block;
-    }
-
-    .gallery-buttons {
-      text-align: center;
-      margin: 10px 0 16px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .gallery-buttons button {
-      background: linear-gradient(135deg, #0b3d4a, #2d6f8e);
-      color: white;
-      border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .gallery-buttons button:hover {
-      transform: scale(1.06);
-      opacity: 0.95;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #2d6f8e;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
-      box-shadow: 0 4px 10px rgba(45,111,142,0.2);
-    }
-
-    .btn:hover {
-      background: #245c76;
-    }
-
-    .paper-link {
-      display: inline-block;
-      margin-top: 6px;
-      color: #0b3d4a;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .available {
-      color: #1f8f3a;
-      font-weight: bold;
-      margin-top: 10px;
-      font-style: italic;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .small-note {
-      font-size: 0.95rem;
-      color: #456;
-    }
-
-    .feature-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .feature-box {
-      background: #eaf7fd;
-      border-radius: 14px;
-      padding: 18px;
-      border: 1px solid #d0e9f5;
-      text-align: center;
-      font-weight: 600;
-      color: #1f4a5c;
-    }
-
-    footer {
-      background: #0b3d4a;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 700px) {
-      .banner-slide,
-      .banner-video {
-        height: 320px;
-      }
-
-      .banner-text h1 {
-        font-size: 30px;
-      }
-
-      .banner-text p {
-        font-size: 18px;
-      }
-
-      nav a {
-        margin: 6px 8px;
-      }
-
-      .dog-photo {
-        height: 300px;
-      }
-
-      .puppy-photo {
-        height: 220px;
-      }
-    }
-  </style>
+footer{
+background:#0b3d4a;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#program">Our Program</a>
-    <a href="#breed">About the Breed</a>
-    <a href="#parents">Meet the Parents</a>
-    <a href="#story">Our Story</a>
-    <a href="#puppies">Puppies</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header id="home">
 
-  <header id="home">
-    <div class="banner-wrap" id="bannerGallery">
-      <img src="Banner.png" class="banner-slide active" alt="Rio Portuguese Water Dogs banner">
+<div class="banner-wrap" id="bannerGallery">
 
-      <!-- Replace promo-video.mp4 with your real video file name -->
-      <video class="banner-video" muted playsinline>
-        <source src="promo-video.mp4" type="video/mp4">
-      </video>
+<img src="Banner.png" class="banner-slide active">
 
-      <div class="banner-arrow-wrap">
-        <button class="banner-arrow" onclick="prevBanner()" aria-label="Previous banner">&#10094;</button>
-        <button class="banner-arrow" onclick="nextBanner()" aria-label="Next banner">&#10095;</button>
-      </div>
-    </div>
+<video class="banner-video" muted playsinline>
+<source src="promo-video.mp4" type="video/mp4">
+</video>
 
-    <div class="banner-text">
-      <h1>Rio Portuguese Water Dogs</h1>
-      <p>Loving Family-Raised Portuguese Water Dogs</p>
-      <a href="#puppies" class="btn">See the Puppies</a>
-    </div>
-  </header>
+<div class="banner-arrow-wrap">
+<button class="banner-arrow" onclick="prevBanner()">❮</button>
+<button class="banner-arrow" onclick="nextBanner()">❯</button>
+</div>
 
-  <section class="card soft-card">
-    <h2>Welcome</h2>
-    <p>Welcome to Rio Portuguese Water Dogs. We raise happy, healthy, well-loved Portuguese Water Dogs in a loving family environment.</p>
+</div>
 
-    <div class="feature-strip">
-      <div class="feature-box">Family-Raised</div>
-      <div class="feature-box">Loving Temperament</div>
-      <div class="feature-box">Active & Intelligent</div>
-      <div class="feature-box">Raised With Care</div>
-    </div>
-  </section>
+<h1>Rio Portuguese Water Dogs</h1>
+<p>Loving Family-Raised Portuguese Water Dogs</p>
 
-  <section id="about" class="card">
-    <h2>About Us</h2>
-    <p>We love Portuguese Water Dogs for their friendly nature, intelligence, playful personalities, and the joy they bring to everyday life. They are wonderful with people, fun to be around, and can make a beautiful addition to a loving family.</p>
-  </section>
+</header>
 
-  <section id="program" class="card soft-card">
-    <h2>Our Program</h2>
-    <p>Our goal is to raise healthy, happy, loving companions for families who will cherish them for years to come. Our dogs are part of our family and are raised with attentive care and love.</p>
-    <p>Our puppies are raised in our home with their mom and dad. We focus on giving each puppy the love and care it needs with hands-on attention and a clean environment.</p>
-  </section>
+<section id="puppies">
 
-  <section id="breed" class="card">
-    <h2>About Portuguese Water Dogs</h2>
-    <p>Portuguese Water Dogs are intelligent, playful, loyal, and loving companions. They are known for their friendly personalities, athletic nature, and strong bond with their families.</p>
-    <p>This breed is active, people-oriented, and happiest when included as part of the family. With their affectionate temperament and energetic personalities, they can be a wonderful addition to the right home.</p>
-    <p>With proper training, some Portuguese Water Dogs may be able to assist people with:</p>
-    <ul>
-      <li>autism</li>
-      <li>hearing loss</li>
-      <li>mobility disabilities</li>
-      <li>anxiety or emotional support needs</li>
-    </ul>
-  </section>
+<h2>Puppies</h2>
 
-  <section id="parents" class="card soft-card">
-    <h2>Meet the Parents</h2>
+<div class="grid">
 
-    <div class="grid">
-      <div class="parent-card">
-        <div class="gallery auto-gallery" id="momGallery">
-          <img class="dog-photo active" src="Blanka-1.JPG" alt="Blanka photo 1">
-          <img class="dog-photo" src="blanka-2.jpg" alt="Blanka photo 2">
-          <img class="dog-photo" src="blanka-3.png" alt="Blanka photo 3">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('momGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('momGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
+<!-- AMORA -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="Amora-1.jpeg">
+<h3>Amora</h3>
+<div class="available">*Available*</div>
 
-        <h3>Dam (Blanka)</h3>
-        <p>Blanka is a purebred Portuguese Water Dog. She is fearless, playful, and a friendly mama. She is intelligent, caring, and a protector of her babies.</p>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSf37x5ZavHeMmMpiwZvZXJIcHPxeIwv7SjBW8kp5KDx0F_fuQ/viewform"
+target="_blank">Apply for This Puppy</a>
 
-        <p><strong>Health Information</strong></p>
-        <ul>
-          <li>Up to date on vaccinations</li>
-          <li>Vet checked and healthy</li>
-          <li>Maintained on a healthy diet</li>
-        </ul>
+</div>
 
-        <a class="paper-link" href="Mom-registration.jpeg" target="_blank" rel="noopener noreferrer">View Blanka Registration / Pedigree</a>
-      </div>
+<!-- BRUNO -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="Bruno-1.jpeg">
+<h3>Bruno</h3>
+<div class="available">*Available*</div>
 
-      <div class="parent-card">
-        <div class="gallery auto-gallery" id="dadGallery">
-          <img class="dog-photo active" src="teddy-1.png" alt="Teddy photo 1">
-          <img class="dog-photo" src="teddy-2.png" alt="Teddy photo 2">
-          <img class="dog-photo" src="teddy-3.jpg" alt="Teddy photo 3">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('dadGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('dadGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSeOFYUIxHXii4iceniJDjM0Skgso4ANr6-o01ki46r_qbnp-g/viewform"
+target="_blank">Apply for This Puppy</a>
 
-        <h3>Sire (Teddy)</h3>
-        <p>Teddy is also a purebred Portuguese Water Dog. He is a shy and sweet boy who is smart and well trained.</p>
+</div>
 
-        <p><strong>Health Information</strong></p>
-        <ul>
-          <li>Up to date on vaccinations</li>
-          <li>Strong build and healthy condition</li>
-          <li>Maintained on a healthy diet</li>
-        </ul>
+<!-- DULCE -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="Dulce-1.jpeg">
+<h3>Dulce</h3>
+<div class="available">*Available*</div>
 
-        <a class="paper-link" href="teddy-regis.jpeg" target="_blank" rel="noopener noreferrer">View Teddy Registration / Pedigree</a>
-      </div>
-    </div>
-  </section>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSdz0Uj8MAqW7YAicVegWtIkbkPnLQuQdGZEPIfpPDuV3ufx7g/viewform"
+target="_blank">Apply for This Puppy</a>
 
-  <section id="story" class="card">
-    <h2>Our Story</h2>
-    <p>Rio Portuguese Water Dogs was created from our love for this amazing breed. We personally fell in love with Portuguese Water Dogs because of their big personalities and the joy they bring into our lives. Our goal is to share that same joy with other families through healthy puppies raised with love and care.</p>
-  </section>
+</div>
 
-  <section id="puppies" class="card soft-card">
-    <h2>Puppy Info</h2>
-    <p><strong>Available beginning April 29</strong></p>
-    <p>Puppies are raised in our home with love and care until they are ready for their new loving homes. Photos will be posted here as they grow.</p>
-    <p>AKC registerable • Vaccinated • Pickup available in Leesburg, Virginia • Delivery can be arranged for an additional charge.</p>
+<!-- PERLA -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="perla.jpeg">
+<h3>Perla</h3>
+<div class="available">*Available*</div>
 
-    <div class="grid">
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSdkt_vGMq-85dxxFuMjGbSYICjOPhaK9cj1t0l-tFULB_7LGw/viewform"
+target="_blank">Apply for This Puppy</a>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="amoraGallery">
-          <img class="puppy-photo active" src="Amora-1.jpeg" alt="Amora puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('amoraGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('amoraGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Amora</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSf37x5ZavHeMmMpiwZvZXJIcHPxeIwv7SjBW8kp5KDx0F_fuQ/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf37x5ZavHeMmMpiwZvZXJIcHPxeIwv7SjBW8kp5KDx0F_fuQ/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+</div>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="brunoGallery">
-          <img class="puppy-photo active" src="Bruno-1.jpeg" alt="Bruno puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('brunoGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('brunoGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Bruno</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSeOFYUIxHXii4iceniJDjM0Skgso4ANr6-o01ki46r_qbnp-g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeOFYUIxHXii4iceniJDjM0Skgso4ANr6-o01ki46r_qbnp-g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+<!-- RIO -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="rey-1.jpeg">
+<h3>Rio</h3>
+<div class="available">*Available*</div>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="dulceGallery">
-          <img class="puppy-photo active" src="Dulce-1.jpeg" alt="Dulce puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('dulceGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('dulceGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Dulce</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdz0Uj8MAqW7YAicVegWtIkbkPnLQuQdGZEPIfpPDuV3ufx7g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdz0Uj8MAqW7YAicVegWtIkbkPnLQuQdGZEPIfpPDuV3ufx7g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLScyeCev44nwShS7tv3TGMQD9TRr_RRVw5qOqm-TUJJK_37Vew/viewform"
+target="_blank">Apply for This Puppy</a>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="perlaGallery">
-          <img class="puppy-photo active" src="perla.jpeg" alt="Perla puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('perlaGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('perlaGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Perla</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdkt_vGMq-85dxxFuMjGbSYICjOPhaK9cj1t0l-tFULB_7LGw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdkt_vGMq-85dxxFuMjGbSYICjOPhaK9cj1t0l-tFULB_7LGw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+</div>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="reyGallery">
-          <img class="puppy-photo active" src="rey-1.jpeg" alt="Rio puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('reyGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('reyGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Rio</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLScyeCev44nwShS7tv3TGMQD9TRr_RRVw5qOqm-TUJJK_37Vew/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScyeCev44nwShS7tv3TGMQD9TRr_RRVw5qOqm-TUJJK_37Vew/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+<!-- SAMBA -->
+<div class="puppy-card">
+<img class="puppy-photo active" src="samba.jpeg">
+<h3>Samba</h3>
+<div class="available">*Available*</div>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="sambaGallery">
-          <img class="puppy-photo active" src="samba.jpeg" alt="Samba puppy photo">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('sambaGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('sambaGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Samba</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfnm150MhfS2pvRa_Swa0z1HElVH4izzlXnyG3j8fpf7RAhwA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfnm150MhfS2pvRa_Swa0z1HElVH4izzlXnyG3j8fpf7RAhwA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSfnm150MhfS2pvRa_Swa0z1HElVH4izzlXnyG3j8fpf7RAhwA/viewform"
+target="_blank">Apply for This Puppy</a>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="toroGallery">
-          <img class="puppy-photo active" src="toro-1.jpeg" alt="Toro puppy photo 1">
-          <img class="puppy-photo" src="toro-2.jpeg" alt="Toro puppy photo 2">
-        </div>
-        <div class="gallery-buttons">
-          <button onclick="prevImage('toroGallery')" aria-label="Previous photo">&#10094;</button>
-          <button onclick="nextImage('toroGallery')" aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Toro</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSeGf68D_Tjf4Cn22D1wImMpO1RRvRbaYUgxg3CkB8yny_2ZmQ/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeGf68D_Tjf4Cn22D1wImMpO1RRvRbaYUgxg3CkB8yny_2ZmQ/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+</div>
 
-      <div class="puppy-card">
-        <div class="gallery auto-gallery" id="puppy8Gallery">
-          <div style="width:100%; height:300px; background:#d9edf7; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#456; font-weight:bold;">
-            Puppy 8 photo coming soon
-          </div>
-        </div>
-        <div class="gallery-buttons">
-          <button type="button" disabled aria-label="Previous photo">&#10094;</button>
-          <button type="button" disabled aria-label="Next photo">&#10095;</button>
-        </div>
-        <h3>Leon Messi</h3>
-        <div class="available">*Available*</div>
-        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdISM1AYiQu3e9xQzM3FtkKe4RELxx5Ihuey7iRhsqvxnAH_Q/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Registration</a><br>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdISM1AYiQu3e9xQzM3FtkKe4RELxx5Ihuey7iRhsqvxnAH_Q/viewform?usp=sharing&ouid=114766935617707044081" target="_blank" rel="noopener noreferrer">Apply for This Puppy</a>
-      </div>
+<!-- TORO -->
+<div class="puppy-card">
 
-    </div>
+<img class="puppy-photo active" src="toro-1.jpeg">
+<img class="puppy-photo" src="toro-2.jpeg">
 
-    <p class="small-note">When you upload more puppy photos, they can be added to each gallery.</p>
-  </section>
+<div class="gallery-buttons">
+<button onclick="prevImage(this)">❮</button>
+<button onclick="nextImage(this)">❯</button>
+</div>
 
-  <section id="contact" class="card">
-    <h2>Contact</h2>
-    <p><strong>Email:</strong> haleyclaros@gmail.com</p>
-    <p><strong>Phone / Text:</strong> 703-786-5363</p>
-    <p><strong>Instagram:</strong> @haleyclaros</p>
-    <p><strong>Location:</strong> Leesburg, Virginia</p>
-  </section>
+<h3>Toro</h3>
+<div class="available">*Available*</div>
 
-  <footer>
-    <p>Rio Portuguese Water Dogs</p>
-    <p>Leesburg, Virginia</p>
-    <p>© 2026 Rio Portuguese Water Dogs</p>
-  </footer>
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSeGf68D_Tjf4Cn22D1wImMpO1RRvRbaYUgxg3CkB8yny_2ZmQ/viewform"
+target="_blank">Apply for This Puppy</a>
 
-  <script>
-    function nextImage(galleryId) {
-      const gallery = document.getElementById(galleryId);
-      if (!gallery) return;
-      const images = gallery.querySelectorAll("img");
-      if (images.length <= 1) return;
+</div>
 
-      let activeIndex = 0;
+<!-- LEON MESSI -->
+<div class="puppy-card">
 
-      images.forEach((img, index) => {
-        if (img.classList.contains("active")) {
-          activeIndex = index;
-          img.classList.remove("active");
-        }
-      });
+<img class="puppy-photo active" src="leonmessi-1.jpeg">
 
-      const nextIndex = (activeIndex + 1) % images.length;
-      images[nextIndex].classList.add("active");
-    }
+<h3>Leon Messi</h3>
+<div class="available">*Available*</div>
 
-    function prevImage(galleryId) {
-      const gallery = document.getElementById(galleryId);
-      if (!gallery) return;
-      const images = gallery.querySelectorAll("img");
-      if (images.length <= 1) return;
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSdISM1AYiQu3e9xQzM3FtkKe4RELxx5Ihuey7iRhsqvxnAH_Q/viewform"
+target="_blank">Apply for This Puppy</a>
 
-      let activeIndex = 0;
+</div>
 
-      images.forEach((img, index) => {
-        if (img.classList.contains("active")) {
-          activeIndex = index;
-          img.classList.remove("active");
-        }
-      });
+</div>
 
-      const prevIndex = (activeIndex - 1 + images.length) % images.length;
-      images[prevIndex].classList.add("active");
-    }
+</section>
 
-    const autoGalleries = [
-      "momGallery",
-      "dadGallery",
-      "amoraGallery",
-      "brunoGallery",
-      "dulceGallery",
-      "perlaGallery",
-      "reyGallery",
-      "sambaGallery",
-      "toroGallery"
-    ];
+<footer>
+<p>Rio Portuguese Water Dogs</p>
+<p>Leesburg, Virginia</p>
+</footer>
 
-    autoGalleries.forEach(id => {
-      setInterval(() => {
-        nextImage(id);
-      }, 3500);
-    });
+<script>
 
-    const bannerItems = document.querySelectorAll('#bannerGallery .banner-slide, #bannerGallery .banner-video');
-    let bannerIndex = 0;
+function nextImage(btn){
+const gallery=btn.closest('.puppy-card');
+const images=gallery.querySelectorAll('.puppy-photo');
+let index=[...images].findIndex(img=>img.classList.contains('active'));
+images[index].classList.remove('active');
+images[(index+1)%images.length].classList.add('active');
+}
 
-    function showBanner(index) {
-      bannerItems.forEach((item, i) => {
-        item.classList.remove('active');
-        if (item.tagName === 'VIDEO') {
-          item.pause();
-          item.currentTime = 0;
-        }
-        if (i === index) {
-          item.classList.add('active');
-          if (item.tagName === 'VIDEO') {
-            item.play().catch(() => {});
-          }
-        }
-      });
-    }
+function prevImage(btn){
+const gallery=btn.closest('.puppy-card');
+const images=gallery.querySelectorAll('.puppy-photo');
+let index=[...images].findIndex(img=>img.classList.contains('active'));
+images[index].classList.remove('active');
+images[(index-1+images.length)%images.length].classList.add('active');
+}
 
-    function nextBanner() {
-      bannerIndex = (bannerIndex + 1) % bannerItems.length;
-      showBanner(bannerIndex);
-    }
+const bannerItems=document.querySelectorAll('#bannerGallery img, #bannerGallery video');
+let bannerIndex=0;
 
-    function prevBanner() {
-      bannerIndex = (bannerIndex - 1 + bannerItems.length) % bannerItems.length;
-      showBanner(bannerIndex);
-    }
+function showBanner(i){
+bannerItems.forEach(el=>el.classList.remove('active'));
+bannerItems[i].classList.add('active');
+}
 
-    setInterval(nextBanner, 5000);
-  </script>
+function nextBanner(){
+bannerIndex=(bannerIndex+1)%bannerItems.length;
+showBanner(bannerIndex);
+}
+
+function prevBanner(){
+bannerIndex=(bannerIndex-1+bannerItems.length)%bannerItems.length;
+showBanner(bannerIndex);
+}
+
+setInterval(nextBanner,5000);
+
+</script>
 
 </body>
 </html>
