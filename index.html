@@ -30,7 +30,10 @@ text-decoration:none;
 font-weight:bold;
 }
 
-header{text-align:center;background:#f3fbff}
+header{
+text-align:center;
+background:#f3fbff;
+}
 
 .banner-wrap{
 position:relative;
@@ -45,7 +48,9 @@ object-fit:cover;
 display:none;
 }
 
-.banner-slide.active,.banner-video.active{display:block}
+.banner-slide.active,.banner-video.active{
+display:block;
+}
 
 .banner-arrow-wrap{
 position:absolute;
@@ -56,6 +61,7 @@ transform:translateY(-50%);
 display:flex;
 justify-content:space-between;
 padding:0 20px;
+pointer-events:none;
 }
 
 .banner-arrow{
@@ -67,6 +73,7 @@ height:45px;
 border-radius:50%;
 font-size:20px;
 cursor:pointer;
+pointer-events:auto;
 }
 
 section{
@@ -96,7 +103,9 @@ border-radius:14px;
 display:none;
 }
 
-.puppy-photo.active{display:block}
+.puppy-photo.active{
+display:block;
+}
 
 .gallery-buttons{
 text-align:center;
@@ -147,10 +156,10 @@ margin-top:40px;
 
 <div class="banner-wrap" id="bannerGallery">
 
-<img src="Banner.png" class="banner-slide active">
+<img src="Banner.png" class="banner-slide active" alt="Rio Portuguese Water Dogs banner">
 
-<video class="banner-video" muted playsinline>
-<source src="promo-video.mp4" type="video/mp4">
+<video class="banner-video" muted playsinline preload="metadata">
+<source src="finalpromoweek1.mp4" type="video/mp4">
 </video>
 
 <div class="banner-arrow-wrap">
@@ -173,81 +182,68 @@ margin-top:40px;
 
 <!-- AMORA -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="Amora-1.jpeg">
+<img class="puppy-photo active" src="Amora-1.jpeg" alt="Amora">
 <h3>Amora</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSf37x5ZavHeMmMpiwZvZXJIcHPxeIwv7SjBW8kp5KDx0F_fuQ/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- BRUNO -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="Bruno-1.jpeg">
+<img class="puppy-photo active" src="Bruno-1.jpeg" alt="Bruno">
 <h3>Bruno</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSeOFYUIxHXii4iceniJDjM0Skgso4ANr6-o01ki46r_qbnp-g/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- DULCE -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="Dulce-1.jpeg">
+<img class="puppy-photo active" src="Dulce-1.jpeg" alt="Dulce">
 <h3>Dulce</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSdz0Uj8MAqW7YAicVegWtIkbkPnLQuQdGZEPIfpPDuV3ufx7g/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- PERLA -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="perla.jpeg">
+<img class="puppy-photo active" src="perla.jpeg" alt="Perla">
 <h3>Perla</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSdkt_vGMq-85dxxFuMjGbSYICjOPhaK9cj1t0l-tFULB_7LGw/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- RIO -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="rey-1.jpeg">
+<img class="puppy-photo active" src="rey-1.jpeg" alt="Rio">
 <h3>Rio</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLScyeCev44nwShS7tv3TGMQD9TRr_RRVw5qOqm-TUJJK_37Vew/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- SAMBA -->
 <div class="puppy-card">
-<img class="puppy-photo active" src="samba.jpeg">
+<img class="puppy-photo active" src="samba.jpeg" alt="Samba">
 <h3>Samba</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSfnm150MhfS2pvRa_Swa0z1HElVH4izzlXnyG3j8fpf7RAhwA/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- TORO -->
 <div class="puppy-card">
-
-<img class="puppy-photo active" src="toro-1.jpeg">
-<img class="puppy-photo" src="toro-2.jpeg">
+<img class="puppy-photo active" src="toro-1.jpeg" alt="Toro photo 1">
+<img class="puppy-photo" src="toro-2.jpeg" alt="Toro photo 2">
 
 <div class="gallery-buttons">
 <button onclick="prevImage(this)">❮</button>
@@ -256,25 +252,19 @@ target="_blank">Apply for This Puppy</a>
 
 <h3>Toro</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSeGf68D_Tjf4Cn22D1wImMpO1RRvRbaYUgxg3CkB8yny_2ZmQ/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 <!-- LEON MESSI -->
 <div class="puppy-card">
-
-<img class="puppy-photo active" src="leonmessi-1.jpeg">
-
+<img class="puppy-photo active" src="leonmessi-1.jpeg" alt="Leon Messi">
 <h3>Leon Messi</h3>
 <div class="available">*Available*</div>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSdISM1AYiQu3e9xQzM3FtkKe4RELxx5Ihuey7iRhsqvxnAH_Q/viewform"
 target="_blank">Apply for This Puppy</a>
-
 </div>
 
 </div>
@@ -287,7 +277,6 @@ target="_blank">Apply for This Puppy</a>
 </footer>
 
 <script>
-
 function nextImage(btn){
 const gallery=btn.closest('.puppy-card');
 const images=gallery.querySelectorAll('.puppy-photo');
@@ -306,10 +295,37 @@ images[(index-1+images.length)%images.length].classList.add('active');
 
 const bannerItems=document.querySelectorAll('#bannerGallery img, #bannerGallery video');
 let bannerIndex=0;
+let bannerTimer;
 
 function showBanner(i){
-bannerItems.forEach(el=>el.classList.remove('active'));
+clearTimeout(bannerTimer);
+
+bannerItems.forEach(el=>{
+el.classList.remove('active');
+if(el.tagName==="VIDEO"){
+el.pause();
+el.currentTime=0;
+el.onended=null;
+}
+});
+
 bannerItems[i].classList.add('active');
+
+const activeItem=bannerItems[i];
+
+if(activeItem.tagName==="VIDEO"){
+const playPromise=activeItem.play();
+if(playPromise!==undefined){
+playPromise.catch(()=>{});
+}
+activeItem.onended=function(){
+nextBanner();
+};
+}else{
+bannerTimer=setTimeout(function(){
+nextBanner();
+},5000);
+}
 }
 
 function nextBanner(){
@@ -322,12 +338,12 @@ bannerIndex=(bannerIndex-1+bannerItems.length)%bannerItems.length;
 showBanner(bannerIndex);
 }
 
-setInterval(nextBanner,5000);
-
+showBanner(0);
 </script>
 
 </body>
 </html>
+
 
    
 
