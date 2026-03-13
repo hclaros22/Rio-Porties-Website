@@ -38,13 +38,58 @@
       background: #f3fbff;
     }
 
-    .banner {
+    .banner-wrap {
+      position: relative;
+      width: 100%;
+      margin: 0 0 28px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .banner-slide,
+    .banner-video {
       width: 100%;
       height: 520px;
       object-fit: cover;
+      display: none;
+      background: #d9edf7;
+    }
+
+    .banner-slide.active,
+    .banner-video.active {
       display: block;
-      margin: 0 0 28px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .banner-arrow-wrap {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 18px;
+      pointer-events: none;
+    }
+
+    .banner-arrow {
+      pointer-events: auto;
+      background: linear-gradient(135deg, rgba(11,61,74,0.9), rgba(45,111,142,0.9));
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .banner-arrow:hover {
+      transform: scale(1.06);
+      opacity: 0.95;
     }
 
     .banner-text {
@@ -225,7 +270,8 @@
     }
 
     @media (max-width: 700px) {
-      .banner {
+      .banner-slide,
+      .banner-video {
         height: 320px;
       }
 
@@ -266,7 +312,19 @@
   </nav>
 
   <header id="home">
-    <img src="Banner.png" class="banner" alt="Rio Portuguese Water Dogs banner">
+    <div class="banner-wrap" id="bannerGallery">
+      <img src="Banner.png" class="banner-slide active" alt="Rio Portuguese Water Dogs banner">
+
+      <!-- Replace promo-video.mp4 with your real video file name -->
+      <video class="banner-video" muted playsinline>
+        <source src="promo-video.mp4" type="video/mp4">
+      </video>
+
+      <div class="banner-arrow-wrap">
+        <button class="banner-arrow" onclick="prevBanner()" aria-label="Previous banner">&#10094;</button>
+        <button class="banner-arrow" onclick="nextBanner()" aria-label="Next banner">&#10095;</button>
+      </div>
+    </div>
 
     <div class="banner-text">
       <h1>Rio Portuguese Water Dogs</h1>
@@ -372,7 +430,7 @@
 
   <section id="puppies" class="card soft-card">
     <h2>Puppy Info</h2>
-    <p><strong>Available beginning April 8</strong></p>
+    <p><strong>Available beginning April 29</strong></p>
     <p>Puppies are raised in our home with love and care until they are ready for their new loving homes. Photos will be posted here as they grow.</p>
     <p>AKC registerable • Vaccinated • Pickup available in Leesburg, Virginia • Delivery can be arranged for an additional charge.</p>
 
@@ -388,7 +446,7 @@
         </div>
         <h3>Amora</h3>
         <div class="available">*Available*</div>
-        <a class="paper-link" href="#" target="_blank">Registration</a><br>
+        <a class="paper-link" href="https://docs.google.com/forms/d/e/1FAIpQLSf37x5ZavHeMmMpiwZvZXJIcHPxeIwv7SjBW8kp5KDx0F_fuQ/viewform?usp=sharing&ouid=114766935617707044081" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
@@ -402,7 +460,9 @@
         </div>
         <h3>Bruno</h3>
         <div class="available">*Available*</div>
+        <!-- Put Bruno registration link between the quotes after href= -->
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
+        <!-- Put Bruno apply form link between the quotes after href= -->
         <a class="btn" href="#">Apply for This Puppy</a>
       </div>
 
@@ -436,13 +496,13 @@
 
       <div class="puppy-card">
         <div class="gallery auto-gallery" id="reyGallery">
-          <img class="puppy-photo active" src="rey-1.jpeg" alt="Rey puppy photo">
+          <img class="puppy-photo active" src="rey-1.jpeg" alt="Rio puppy photo">
         </div>
         <div class="gallery-buttons">
           <button onclick="prevImage('reyGallery')" aria-label="Previous photo">&#10094;</button>
           <button onclick="nextImage('reyGallery')" aria-label="Next photo">&#10095;</button>
         </div>
-        <h3>Rey</h3>
+        <h3>Rio</h3>
         <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
@@ -487,7 +547,7 @@
           <button type="button" disabled aria-label="Previous photo">&#10094;</button>
           <button type="button" disabled aria-label="Next photo">&#10095;</button>
         </div>
-        <h3>Puppy 8</h3>
+        <h3>Leon Messi</h3>
         <div class="available">*Available*</div>
         <a class="paper-link" href="#" target="_blank">Registration</a><br>
         <a class="btn" href="#">Apply for This Puppy</a>
@@ -568,12 +628,44 @@
         nextImage(id);
       }, 3500);
     });
+
+    const bannerItems = document.querySelectorAll('#bannerGallery .banner-slide, #bannerGallery .banner-video');
+    let bannerIndex = 0;
+
+    function showBanner(index) {
+      bannerItems.forEach((item, i) => {
+        item.classList.remove('active');
+        if (item.tagName === 'VIDEO') {
+          item.pause();
+          item.currentTime = 0;
+        }
+        if (i === index) {
+          item.classList.add('active');
+          if (item.tagName === 'VIDEO') {
+            item.play().catch(() => {});
+          }
+        }
+      });
+    }
+
+    function nextBanner() {
+      bannerIndex = (bannerIndex + 1) % bannerItems.length;
+      showBanner(bannerIndex);
+    }
+
+    function prevBanner() {
+      bannerIndex = (bannerIndex - 1 + bannerItems.length) % bannerItems.length;
+      showBanner(bannerIndex);
+    }
+
+    setInterval(nextBanner, 5000);
   </script>
 
 </body>
 </html>
 
    
+
 
 
 
