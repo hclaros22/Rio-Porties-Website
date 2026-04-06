@@ -173,6 +173,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 22px;
+      align-items: stretch;
     }
 
     .parent-card,
@@ -182,6 +183,9 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      height:  100%;
     }
 
     .dog-photo {
@@ -202,6 +206,9 @@
       background: #d9edf7;
       display: none;
       margin-bottom: 12px;
+    }
+    .puppy-card .gallery{
+      height: 300;
     }
 
     .dog-photo.active,
@@ -573,8 +580,8 @@
       <div class="puppy-card">
         <div class="gallery auto-gallery" id="perlaGallery">
           <img class="puppy-photo active" src="perlaweek4-1.png" alt="Perla puppy photo 1">
-          <img class="puppy-photo active" src="perlaweek4-2.png" alt="Perla puppy photo 2">
-          <img class="puppy-photo active" src="perlaweek4-3.jpeg" alt="perla puppy photo 3">
+          <img class="puppy-photo" src="perlaweek4-2.png" alt="Perla puppy photo 2">
+          <img class="puppy-photo" src="perlaweek4-3.jpeg" alt="perla puppy photo 3">
         </div>
         <div class="gallery-buttons">
           <button onclick="prevImage('perlaGallery')" aria-label="Previous photo">&#10094;</button>
@@ -590,7 +597,7 @@
       <div class="puppy-card">
         <div class="gallery auto-gallery" id="RioGallery">
           <img class="puppy-photo active" src="rioweek4-1.png" alt="Rio puppy photo 1">
-          <img class="puppy-photo active" src="rioweek4-2.png" alt="Rio puppy pic 2"
+          <img class="puppy-photo active" src="rioweek4-2.png" alt="Rio puppy pic 2">
         </div>
         <div class="gallery-buttons">
           <button onclick="prevImage('RioGallery')" aria-label="Previous photo">&#10094;</button>
